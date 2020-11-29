@@ -1,5 +1,5 @@
 'use strict';
 
-function SupportService() {}
+function OrganizationsService() {}
 
-module.exports = SupportService;
+module.exports = OrganizationsService;
