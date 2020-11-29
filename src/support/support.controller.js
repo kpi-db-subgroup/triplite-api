@@ -1,5 +1,5 @@
 'use strict';
 
-function UsersController() {}
+function SupportController() {}
 
-module.exports = UsersController;
+module.exports = SupportController;
