@@ -1,5 +1,5 @@
 'use strict';
 
-function SupportService() {}
+function CommentsService() {}
 
-module.exports = SupportService;
+module.exports = CommentsService;
