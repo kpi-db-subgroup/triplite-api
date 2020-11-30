@@ -11,7 +11,8 @@ Main.injectDependencies = () => {
     const annotatedObject = injectionAnnotated[injectionKey];
     const { injections } = annotatedObject.params;
     for (const injection of injections) {
-      annotatedObject.objectInterface.value[injection] = AppModule[injection];
+      const { prototype } = annotatedObject.objectInterface.value;
+      prototype[injection] = AppModule[injection];
     }
   }
 };
