@@ -2,7 +2,9 @@
 
 const Injection = require('../core/injection');
 
-Injection.annotate(UsersRepository, { injections: ['database, usersEntityBuilder'] });
+Injection.annotate(UsersRepository, {
+  injections: ['database, usersEntityBuilder'],
+});
 function UsersRepository() {}
 
 UsersRepository.prototype.create = async function (user) {
