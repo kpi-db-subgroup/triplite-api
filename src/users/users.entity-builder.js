@@ -11,6 +11,7 @@ const UsersEntity = {
   address: '',
   photo: '',
   password: '',
+  type: '',
   isBanned: false,
   organization: null,
 };
