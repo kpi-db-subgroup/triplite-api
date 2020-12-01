@@ -8,7 +8,9 @@ const database = require('./database/database-interface');
 
 const extractInstances = obj =>
   Object.keys(obj).reduce((accumulator, current) => {
-    accumulator[lowerCaseFirstLetter(current)] = new obj[current]();
+    const Bean = obj[current];
+    accumulator[lowerCaseFirstLetter(current)] =
+      typeof bean === 'function' ? new Bean() : Bean;
     return accumulator;
   }, {});
 

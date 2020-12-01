@@ -4,6 +4,7 @@
   "description": "API for TripLite project",
   "main": "main.js",
   "scripts": {
+    "start": "node bootstrap.js",
     "test": "npm run-script eslint && npm run-script prettier:check && mocha test/*",
     "eslint": "eslint --ext .js,.jsx,.ts,.tsx ./",
     "prettier:check": "prettier --check .",
