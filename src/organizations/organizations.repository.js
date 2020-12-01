@@ -17,9 +17,9 @@ OrganizationsRepository.prototype.create = async function (organization) {
 };
 
 OrganizationsRepository.prototype.findById = async function (id) {
-  const row = await this.database.get(
-    `SELECT * FROM organizations WHERE id=${id}`
-  );
+  const row = await this.database.get(`
+    SELECT * FROM organizations WHERE id=${id}
+  `);
   return this.organizationsEntityBuilder.getEntityFromRow(row);
 };
 
@@ -37,9 +37,9 @@ OrganizationsRepository.prototype.update = async function (id, organization) {
 };
 
 OrganizationsRepository.prototype.delete = async function (id) {
-  const result = await this.database.run(
-    `DELETE FROM organizations WHERE id=${id}`
-  );
+  const result = await this.database.run(`
+    DELETE FROM organizations WHERE id=${id}
+  `);
   return result;
 };
 
