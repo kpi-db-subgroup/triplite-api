@@ -31,7 +31,7 @@ UsersRepository.prototype.update = async function (id, user) {
   const result = await this.database.run(`
     UPDATE users SET name=${user.name}, bio=${user.bio},
     date_of_birth=${user.dateOfBirth}, address=${user.address},
-    photo=${user.photo}, password=${user.password}, WHERE id=${id}
+    photo=${user.photo}, password=${user.password} WHERE id=${id}
   `);
   return result;
 };
