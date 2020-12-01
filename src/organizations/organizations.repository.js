@@ -29,7 +29,7 @@ OrganizationsRepository.prototype.findAll = async function () {
 OrganizationsRepository.prototype.update = async function (id, organization) {
   const result = await this.database.run(`
     UPDATE organizations SET name=${organization.name}, address=${organization.address},
-    owner=${organization.owner}, document=${organization.document}
+    owner=${organization.owner}, document=${organization.document} WHERE id=${id}
   `);
   return result;
 };
