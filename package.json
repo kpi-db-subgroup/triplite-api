@@ -21,7 +21,7 @@
   },
   "homepage": "https://github.com/kpi-db-subgroup/triplite-api#readme",
   "dependencies": {
-    "annotations-js": "^1.0.0",
+    "annotations-js": "^1.0.1",
     "sqlite3": "^5.0.0"
   },
   "devDependencies": {
