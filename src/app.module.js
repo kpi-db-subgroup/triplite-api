@@ -4,6 +4,7 @@ const { lowerCaseFirstLetter } = require('./core/common');
 
 const UsersModule = require('./users/users.module');
 const OrganizationsModule = require('./organizations/organizations.module');
+const PlacesModule = require('./places/places.module');
 
 const database = require('./database/database-interface');
 
@@ -22,5 +23,6 @@ const extractInstances = obj =>
 module.exports = {
   ...extractInstances(UsersModule),
   ...extractInstances(OrganizationsModule),
+  ...extractInstances(PlacesModule),
   database,
 };

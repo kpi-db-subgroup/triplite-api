@@ -38,7 +38,7 @@ PlacesRepository.prototype.update = async function (id, place) {
   `);
   return result;
 };
-  
+
 PlacesRepository.prototype.delete = async function (id) {
   const result = await this.database.run(`DELETE FROM places WHERE id=${id}`);
   return result;
