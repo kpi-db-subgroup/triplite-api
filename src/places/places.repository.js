@@ -24,6 +24,20 @@ PlacesRepository.prototype.findById = async function (id) {
   return this.placesEntityBuilder.getEntityFromRow(row);
 };
 
+PlacesRepository.prototype.findByCategoryId = async function (categoryId) {
+  const rows = await this.database.all(`
+    SELECT * FROM places WHERE category_id=${categoryId}
+  `);
+  return rows;
+};
+
+PlacesRepository.prototype.findByOrganizationId = async function (organizationId) {
+  const rows = await this.database.all(`
+    SELECT * FROM places WHERE organization_id=${organizationId}
+  `);
+  return rows;
+};
+
 PlacesRepository.prototype.findAll = async function () {
   const rows = await this.database.all('SELECT * FROM places');
   return this.placesEntityBuilder.getEntitiesFromRows(rows);
