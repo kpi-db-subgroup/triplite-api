@@ -3,8 +3,7 @@
 const Injection = require('../core/injection');
 
 Injection.annotate(CommentsRepository,
-  { injection: ['database', 'commentsEntityBuilder'] });
-
+  { injections: ['database', 'commentsEntityBuilder'] });
 function CommentsRepository() {}
 
 CommentsRepository.prototype.create = async function (comment) {
