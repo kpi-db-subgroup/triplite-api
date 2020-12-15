@@ -19,6 +19,21 @@ CommentsRepository.prototype.findById = async function (id) {
   return this.commentEntityBuilder.getEntityFromRow(row);
 };
 
+CommentsRepository.prototype.findByUserId = async function (userId) {
+  const row = await this.database.get(`SELECT * FROM comments WHERE userId=${userId}`);
+  return this.commentEntityBuilder.getEntityFromRow(row);
+};
+
+CommentsRepository.prototype.findByPlaceId = async function (placeId) {
+  const row = await this.database.get(`SELECT * FROM comments WHERE placeId=${placeId}`);
+  return this.commentEntityBuilder.getEntityFromRow(row);
+};
+
+CommentsRepository.prototype.findByCommentId = async function (commentId) {
+  const row = await this.database.get(`SELECT * FROM comments WHERE commentId=${commentId}`);
+  return this.commentEntityBuilder.getEntityFromRow(row);
+};
+
 CommentsRepository.prototype.findAll = async function () {
   const rows = await this.database.all('SELECT * FROM comments');
   return this.commentEntityBuilder.getEntitiesFromRows(rows);
