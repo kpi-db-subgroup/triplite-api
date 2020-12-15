@@ -1,6 +1,6 @@
 'user strict';
 
-const Injection = require('../core/injection');
+const { Injection } = require('../core/triplite-annotations');
 
 Injection.annotate(RatingRepository, {
   injections: ['database', 'ratingEntityBuilder'],

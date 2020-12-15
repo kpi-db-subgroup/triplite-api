@@ -1,6 +1,6 @@
 'use strict';
 
-const Injection = require('../core/injection');
+const { Injection } = require('../core/triplite-annotations');
 
 Injection.annotate(PlacesRepository, {
   injections: ['database, placesEntityBuilder'],

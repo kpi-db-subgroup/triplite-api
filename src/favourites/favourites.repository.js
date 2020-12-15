@@ -1,6 +1,6 @@
 'use strict';
 
-const Injection = require('../core/injection');
+const { Injection } = require('../core/triplite-annotations');
 
 Injection(FavouritesRepository, {
   injections: ['database', 'usersEntityBuilder', 'placesEntityBuilder'],
