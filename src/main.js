@@ -1,6 +1,6 @@
 'use strict';
 
-const Injection = require('./core/injection');
+const { Injection } = require('./core/triplite-annotations');
 const AppModule = require('./app.module');
 
 const environment = require('./environment');
