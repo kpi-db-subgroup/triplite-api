@@ -3,7 +3,7 @@
 const Injection = require('../core/injection');
 
 Injection.annotate(CategoriesRepository, {
-  injections: ['database, categoriesEntityBuilder'],
+  injections: ['database', 'categoriesEntityBuilder'],
 });
 function CategoriesRepository() {}
 
@@ -16,7 +16,9 @@ CategoriesRepository.prototype.create = async function (category) {
 };
 
 CategoriesRepository.prototype.findById = async function (id) {
-  const row = await this.database.get(`SELECT * FROM categories WHERE id=${id}`);
+  const row = await this.database.get(`
+    SELECT * FROM categories WHERE id=${id}
+  `);
   return this.categoriesEntityBuilder.getEntityFromRow(row);
 };
 
@@ -33,7 +35,9 @@ CategoriesRepository.prototype.update = async function (id, category) {
 };
 
 CategoriesRepository.prototype.delete = async function (id) {
-  const result = await this.database.run(`DELETE FROM categories WHERE id=${id}`);
+  const result = await this.database.run(`
+    DELETE FROM categories WHERE id=${id}
+  `);
   return result;
 };
 
