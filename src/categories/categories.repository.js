@@ -9,10 +9,9 @@ function CategoriesRepository() {}
 
 CategoriesRepository.prototype.create = async function(categoriesRequest) {
   const result = await this.database.run(`
-  INSERT INTO categories(name)
-  VALUES(${categoriesRequest.name})
+    INSERT INTO categories(name)
+    VALUES(${categoriesRequest.name})
   `);
-
   return result;
 }
 
@@ -28,15 +27,14 @@ CategoriesRepository.prototype.findAll = async function() {
 
 CategoriesRepository.prototype.update = async function(id, categoriesRequest) {
   const result = await this.database.run(`
-  UPDATE categories SET name=${categoriesRequest.name} WHERE id=${id}
+    UPDATE categories SET name=${categoriesRequest.name} WHERE id=${id}
   `);
   return result;
 }
 
-
-CategoriesRepository.prototype.update = async function(id) {
+CategoriesRepository.prototype.delete = async function(id) {
   const result = await this.database.run(`
-  DELETE FROM categories WHERE id=${id}
+    DELETE FROM categories WHERE id=${id}
   `);
   return result;
 }
