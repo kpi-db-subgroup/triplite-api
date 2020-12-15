@@ -32,7 +32,7 @@ PlacesRepository.prototype.findByCategoryId = async function (categoryId) {
 };
 
 PlacesRepository.prototype.findByOrganizationId = async function (
-  organizationId
+  organizationId,
 ) {
   const rows = await this.database.all(`
       SELECT * FROM places WHERE organization_id=${organizationId}
