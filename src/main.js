@@ -3,6 +3,9 @@
 const Injection = require('./core/injection');
 const AppModule = require('./app.module');
 
+const environment = require('./environment');
+const databaseStarter = require('./database/database-starter');
+
 function Main() {}
 
 Main.injectDependencies = () => {
@@ -14,6 +17,18 @@ Main.injectDependencies = () => {
       const { prototype } = annotatedObject.objectInterface.value;
       prototype[injection] = AppModule[injection];
     }
+  }
+};
+
+Main.initializeDatabase = async () => {
+  if (AppModule.database) {
+    const starter = databaseStarter(AppModule.database);
+    await starter.initializeTables();
+    if (environment.development) {
+      await starter.fillTestData();
+    }
+  } else {
+    // TODO
   }
 };
 
