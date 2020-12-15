@@ -7,6 +7,7 @@ const OrganizationsModule = require('./organizations/organizations.module');
 const PlacesModule = require('./places/places.module');
 const SupportModule = require('./support/support.module');
 const CommentsModule = require('./comments/comments.module');
+const FavouritesModule = require('./favourites/favourites.module');
 
 const database = require('./database/database-interface');
 
@@ -28,5 +29,6 @@ module.exports = {
   ...extractInstances(PlacesModule),
   ...extractInstances(SupportModule),
   ...extractInstances(CommentsModule),
+  ...extractInstances(FavouritesModule),
   database,
 };
