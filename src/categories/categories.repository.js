@@ -5,7 +5,6 @@ const Injection = require('../core/injection');
 Injection.annotate(CategoriesRepository, {
   injections: ['database, categoriesEntityBuilder'],
 });
-
 function CategoriesRepository() {}
 
 CategoriesRepository.prototype.create = async function (category) {
