@@ -10,4 +10,4 @@ module.exports = {
   CommentsRepository,
   CommentsService,
   CommentsController,
-}
+};

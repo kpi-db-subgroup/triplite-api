@@ -2,8 +2,9 @@
 
 const Injection = require('../core/injection');
 
-Injection.annotate(CommentsRepository,
-  { injections: ['database', 'commentsEntityBuilder'] });
+Injection.annotate(CommentsRepository, {
+  injections: ['database', 'commentsEntityBuilder'],
+});
 function CommentsRepository() {}
 
 CommentsRepository.prototype.create = async function (comment) {
@@ -20,17 +21,23 @@ CommentsRepository.prototype.findById = async function (id) {
 };
 
 CommentsRepository.prototype.findByUserId = async function (userId) {
-  const row = await this.database.get(`SELECT * FROM comments WHERE userId=${userId}`);
+  const row = await this.database.get(`
+    SELECT * FROM comments WHERE userId=${userId}
+  `);
   return this.commentEntityBuilder.getEntityFromRow(row);
 };
 
 CommentsRepository.prototype.findByPlaceId = async function (placeId) {
-  const row = await this.database.get(`SELECT * FROM comments WHERE placeId=${placeId}`);
+  const row = await this.database.get(`
+    SELECT * FROM comments WHERE placeId=${placeId}
+  `);
   return this.commentEntityBuilder.getEntityFromRow(row);
 };
 
 CommentsRepository.prototype.findByCommentId = async function (commentId) {
-  const row = await this.database.get(`SELECT * FROM comments WHERE commentId=${commentId}`);
+  const row = await this.database.get(`
+    SELECT * FROM comments WHERE commentId=${commentId}
+  `);
   return this.commentEntityBuilder.getEntityFromRow(row);
 };
 
