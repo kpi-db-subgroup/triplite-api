@@ -2,7 +2,7 @@
 
 const Injection = require('../core/injection');
 
-Injection.annotate(CommentsService, { injection: ['commentsRepository'] });
+Injection.annotate(CommentsService, { injections: ['commentsRepository'] });
 function CommentsService() {}
 
 module.exports = CommentsService;
