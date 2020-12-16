@@ -20,7 +20,7 @@ function getLogTime() {
 
 function printLogs(messageType, color, message) {
   const { logFileName, logTime } = getLogTime();
-  const outputMessage = logTime + ` || ${messageType}: ` + message + '\n';
+  const outputMessage = `${logTime}  || ${messageType}: ${message} \n`;
   const path = `./logs/logs-${logFileName}.log`;
   fs.appendFile(path, outputMessage, error => {
     if (error) throw error;
