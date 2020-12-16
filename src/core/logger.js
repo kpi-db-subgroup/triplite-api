@@ -9,7 +9,7 @@ const colors = {
   yellow: '\x1b[33m%s\x1b[0m',
   red: '\x1b[31m%s\x1b[0m',
   green: '\x1b[32m%s\x1b[0m',
-}
+};
 
 function getLogTime() {
   const date = new Date();
@@ -30,18 +30,18 @@ function printLogs(messageType, color, message) {
 
 Logger.info = function (message) {
   printLogs('INFO', colors.white, message);
-}
+};
 
 Logger.warn = function (message) {
   printLogs('WARN', colors.yellow, message);
-}
+};
 
 Logger.error = function (message) {
   printLogs('ERROR', colors.red, message);
-}
+};
 
 Logger.debug = function (message) {
   printLogs('DEBUG', colors.green, message);
-}
+};
 
 module.exports = Logger;
