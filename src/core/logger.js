@@ -18,44 +18,30 @@ function getLogTime() {
   return { logFileName, logTime };
 }
 
-Logger.info = function (message) {
+function printLogs(messageType, color, message) {
   const { logFileName, logTime } = getLogTime();
-  const path = `../logs/logs-${logFileName}.txt`; // should be changed
-  const outputMessage = logTime + ' || INFO: ' + message + '\n';
+  const outputMessage = logTime + ` || ${messageType}: ` + message + '\n';
+  const path = `./logs/logs-${logFileName}.log`;
   fs.appendFile(path, outputMessage, error => {
     if (error) throw error;
   });
-  console.log(colors.white, outputMessage);
+  console.log(color, outputMessage);
+}
+
+Logger.info = function (message) {
+  printLogs('INFO', colors.white, message);
 }
 
 Logger.warn = function (message) {
-  const { logFileName, logTime } = getLogTime();
-  const path = `../logs/logs-${logFileName}.txt`; // should be changed
-  const outputMessage = logTime + ' || INFO: ' + message + '\n';
-  fs.appendFile(path, outputMessage, error => {
-    if (error) throw error;
-  });
-  console.log(colors.yellow, outputMessage);
+  printLogs('WARN', colors.yellow, message);
 }
 
 Logger.error = function (message) {
-  const { logFileName, logTime } = getLogTime();
-  const path = `../logs/logs-${logFileName}.txt`; // should be changed
-  const outputMessage = logTime + ' || ERROR: ' + message + '\n';
-  fs.appendFile(path, outputMessage, error => {
-    if (error) throw error;
-  });
-  console.log(colors.red, outputMessage);
+  printLogs('ERROR', colors.red, message);
 }
 
 Logger.debug = function (message) {
-  const { logFileName, logTime } = getLogTime();
-  const path = `../logs/logs-${logFileName}.txt`; // should be changed
-  const outputMessage = logTime + ' || DEBUG: ' + message + '\n';
-  fs.appendFile(path, outputMessage, error => {
-    if (error) throw error;
-  });
-  console.log(colors.green, outputMessage);
+  printLogs('DEBUG', colors.green, message);
 }
 
 module.exports = Logger;
