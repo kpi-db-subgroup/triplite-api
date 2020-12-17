@@ -1,5 +1,8 @@
 'use strict';
 
+const Logger = require('./core/logger');
+const TripLiteExceptions = require('./core/triplite-exceptions');
+
 const { Injection } = require('./core/triplite-annotations');
 const AppModule = require('./app.module');
 
@@ -28,7 +31,7 @@ Main.initializeDatabase = async () => {
       await starter.fillTestData();
     }
   } else {
-    // TODO
+    Logger.error(TripLiteExceptions.CANNOT_INITIALIZE_DATABASE);
   }
 };
 

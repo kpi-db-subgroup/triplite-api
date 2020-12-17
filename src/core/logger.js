@@ -29,9 +29,9 @@ const getLogTime = () => {
 
 const printMessage = (logType, color, message) => {
   const { logFileName, logTime } = getLogTime();
-  const outputMessage = `${logTime} || ${logType}: ${message} \n`;
+  const outputMessage = `${logTime} || ${logType}: ${message}`;
   const path = `./logs/${logFileName}.log`;
-  fs.appendFile(path, outputMessage, error => {
+  fs.appendFile(path, `${outputMessage}\n`, error => {
     if (error) throw error;
   });
   console.log(color, outputMessage);

@@ -13,11 +13,11 @@ const database = require('./database/database-interface');
 
 const extractInstances = obj =>
   Object.keys(obj).reduce((accumulator, current) => {
-    let Bean = obj[current];
+    let Bean;
     try {
       Bean = new obj[current]();
     } catch (exception) {
-      // TODO
+      Bean = obj[current];
     }
     accumulator[lowerCaseFirstLetter(current)] = Bean;
     return accumulator;
