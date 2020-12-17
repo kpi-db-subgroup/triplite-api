@@ -6,44 +6,51 @@ const fs = require('fs');
 
 const Logger = {};
 
-const colors = {
-  white: '\x1b[0m%s\x1b[0m',
-  yellow: '\x1b[33m%s\x1b[0m',
-  red: '\x1b[31m%s\x1b[0m',
-  green: '\x1b[32m%s\x1b[0m',
+const Colors = {
+  WHITE: '\x1b[0m%s\x1b[0m',
+  YELLOW: '\x1b[33m%s\x1b[0m',
+  RED: '\x1b[31m%s\x1b[0m',
+  GREEN: '\x1b[32m%s\x1b[0m',
 };
 
-function getLogTime() {
+const LogType = {
+  INFO: 'INFO',
+  WARN: 'WARN',
+  ERROR: 'ERROR',
+  DEBUG: 'DEBUG',
+};
+
+const getLogTime = () => {
   const date = new Date();
   const logTime = date.toISOString();
   const logFileName = logTime.slice(0, 10);
   return { logFileName, logTime };
-}
+};
 
-function printLogs(messageType, color, message) {
+const printMessage = (logType, color, message) => {
   const { logFileName, logTime } = getLogTime();
-  const outputMessage = `${logTime}  || ${messageType}: ${message} \n`;
-  const path = `./logs/logs-${logFileName}.log`;
+  const outputMessage = `${logTime} || ${logType}: ${message} \n`;
+  const path = `./logs/${logFileName}.log`;
   fs.appendFile(path, outputMessage, error => {
     if (error) throw error;
   });
   console.log(color, outputMessage);
-}
-
-Logger.info = function (message) {
-  printLogs('INFO', colors.white, message);
 };
 
-Logger.warn = function (message) {
-  printLogs('WARN', colors.yellow, message);
+Logger.info = message => {
+  printMessage(LogType.INFO, Colors.WHITE, message);
 };
 
-Logger.error = function (message) {
-  printLogs('ERROR', colors.red, message);
+Logger.warn = message => {
+  printMessage(LogType.WARN, Colors.YELLOW, message);
 };
 
-Logger.debug = function (message) {
-  printLogs('DEBUG', colors.green, message);
+Logger.error = message => {
+  printMessage(LogType.ERROR, Colors.RED, message);
+};
+
+Logger.debug = message => {
+  printMessage(LogType.DEBUG, Colors.GREEN, message);
 };
 
 module.exports = Logger;
